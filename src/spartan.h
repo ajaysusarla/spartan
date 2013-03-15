@@ -17,43 +17,12 @@
  * Boston, MA 02111-1307 USA
  */
 
-#include <X11/X.h>
-#include <X11/Xlib.h>
-#include <X11/Xutil.h>
-#include <X11/Xatom.h>
-#include <X11/Xproto.h>
-#include <X11/cursorfont.h>
+#ifndef SPARTAN_H
+#define SPARTAN_H
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif /* HAVE_CONFIG_H */
+#include <locale.h>
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <string.h>
-#include <signal.h>
-#include <errno.h>
-#include <getopt.h>
-#include <ctype.h>
-
-#include <sys/wait.h>
-
-#include "spartan.h"
-
-
-int main (int argc, char **argv)
-{
-	char *display = NULL;
-	Display *dpy;
-
-	setlocale (LC_CTYPE, "");
-	if (XSupportsLocale ()) {
-		if (!XSetLocaleModifiers (""))
-			fprintf (stderr, "Failed to set X locale modifiers\n");
-	}
-
-	if (!(dpy = XOpenDisplay (display))) {
-		fprintf (stderr, "Can't open display");
-		return EXIT_FAILURE;
-	}
-
-	return EXIT_SUCCESS;
-}
+#endif /* SPARTAN_H */
